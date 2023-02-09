@@ -17,12 +17,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "pasundayag",
-    "basket",
     "account",
-    "orders",
     "mptt",
     "core",
-    "checkout",
 ]
 
 MIDDLEWARE = [
@@ -49,7 +46,6 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "pasundayag.context_processors.categories",
-                "basket.context_processors.basket",
             ],
         },
     },
