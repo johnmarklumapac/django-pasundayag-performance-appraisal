@@ -4,38 +4,38 @@ from mptt.admin import MPTTModelAdmin
 
 from .models import (
     Category,
-    Product,
-    ProductImage,
-    ProductSpecification,
-    ProductSpecificationValue,
-    ProductType,
+    IPCR,
+    IPCRImage,
+    IPCRSpecification,
+    IPCRSpecificationValue,
+    IPCRType,
 )
 
 admin.site.register(Category, MPTTModelAdmin)
 
 
-class ProductSpecificationInline(admin.TabularInline):
-    model = ProductSpecification
+class IPCRSpecificationInline(admin.TabularInline):
+    model = IPCRSpecification
 
 
-@admin.register(ProductType)
-class ProductTypeAdmin(admin.ModelAdmin):
+@admin.register(IPCRType)
+class IPCRTypeAdmin(admin.ModelAdmin):
     inlines = [
-        ProductSpecificationInline,
+        IPCRSpecificationInline,
     ]
 
 
-class ProductImageInline(admin.TabularInline):
-    model = ProductImage
+class IPCRImageInline(admin.TabularInline):
+    model = IPCRImage
 
 
-class ProductSpecificationValueInline(admin.TabularInline):
-    model = ProductSpecificationValue
+class IPCRSpecificationValueInline(admin.TabularInline):
+    model = IPCRSpecificationValue
 
 
-@admin.register(Product)
-class ProductAdmin(admin.ModelAdmin):
+@admin.register(IPCR)
+class IPCRAdmin(admin.ModelAdmin):
     inlines = [
-        ProductSpecificationValueInline,
-        ProductImageInline,
+        IPCRSpecificationValueInline,
+        IPCRImageInline,
     ]
