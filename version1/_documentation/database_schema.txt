@@ -9,7 +9,7 @@ Table category as C {
   is_active boolean
 }
 
-Table IPCRType as PT {
+Table Status as PT {
   id int [pk, increment]
   name varchar
   is_active boolean

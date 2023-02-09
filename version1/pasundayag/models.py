@@ -34,9 +34,9 @@ class Category(MPTTModel):
         return self.name
 
 
-class IPCRType(models.Model):
+class Status(models.Model):
     """
-    IPCRType Table will provide a list of the different types
+    Status Table will provide a list of the different types
     of ipcrs that are for sale.
     """
 
@@ -54,10 +54,10 @@ class IPCRType(models.Model):
 class IPCRSpecification(models.Model):
     """
     The IPCR Specification Table contains ipcr
-    specifiction or features for the ipcr types.
+    specifiction or features for the ipcr status.
     """
 
-    ipcr_type = models.ForeignKey(IPCRType, on_delete=models.RESTRICT)
+    ipcr_type = models.ForeignKey(Status, on_delete=models.RESTRICT)
     name = models.CharField(verbose_name=_("Name"), help_text=_("Required"), max_length=255)
 
     class Meta:
@@ -73,7 +73,7 @@ class IPCR(models.Model):
     The IPCR table contining all ipcr items.
     """
 
-    ipcr_type = models.ForeignKey(IPCRType, on_delete=models.RESTRICT)
+    ipcr_type = models.ForeignKey(Status, on_delete=models.RESTRICT)
     category = models.ForeignKey(Category, on_delete=models.RESTRICT)
     title = models.CharField(
         verbose_name=_("title"),

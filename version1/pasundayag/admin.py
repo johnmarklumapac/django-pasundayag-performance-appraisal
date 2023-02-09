@@ -8,7 +8,7 @@ from .models import (
     IPCRImage,
     IPCRSpecification,
     IPCRSpecificationValue,
-    IPCRType,
+    Status,
 )
 
 admin.site.register(Category, MPTTModelAdmin)
@@ -18,8 +18,8 @@ class IPCRSpecificationInline(admin.TabularInline):
     model = IPCRSpecification
 
 
-@admin.register(IPCRType)
-class IPCRTypeAdmin(admin.ModelAdmin):
+@admin.register(Status)
+class StatusAdmin(admin.ModelAdmin):
     inlines = [
         IPCRSpecificationInline,
     ]
