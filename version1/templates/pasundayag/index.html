@@ -10,42 +10,77 @@
       <path
         d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
     </svg>
-    COVID-19 - <u>Click here for our latest updates</u> on our pasundayags, website and contact centre. Thank you for
+    Perfomance Appraisal System - <u>Click here for our latest updates</u> we are doing our best to make CSU the spearhead of the future. Thank you for
     your patience and support.
   </div>
   <div class="container">
     <div class="row">
       <div class="album py-5">
         <div class="pb-3">
-          <h1 class="h3">Popular</h1>
+          <h1 class="h3">Perfomance Appraisal System</h1>
         </div>
+
         {% if not ipcrs %}
         <div class="col-12">There are currently no ipcrs active</div>
         {% else %}
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
-          {% for ipcr in ipcrs %}
-          <div class="col">
-            <div class="card border-0">
-              {% for image in ipcr.ipcr_image.all %}
-              {% if image.is_feature%}
-              <img class="img-fluid" alt="Responsive image" src="{{ image.image.url }}"
-                alt="{{ image.image.alt_text }}">
-              {% endif %}
-              {% endfor %}
-              <div class="card-body px-0">
-                <p class="card-text">
-                  <a class="text-dark text-decoration-none"
-                    href="{{ ipcr.get_absolute_url }}">{{ ipcr.title|slice:":50" }}...</a>
-                </p>
-                <div class="fw-bold">£{{ipcr.regular_price}}</div>
+
+        {% for ipcr in ipcrs %}
+          <div class="row border rounded mb-1">
+            <div class="col col-lg-2 text-center p-3">
+                {% for image in ipcr.ipcr_image.all %}
+                {% if image.is_feature%}
+                  <img class="rounded-circle border" alt = "Rounded Image" width = "100" height = "100" src="{{ image.image.url }}"
+                  alt="{{ image.image.alt_text }}">
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="col col-lg-3 text-start p-3">
+              <div class="card border-0">
+                <div class="card-body px-0">
+                  <p class="card-text">
+                    <a class="text-dark text-decoration-none fw-bold h"
+                      href="{{ ipcr.get_absolute_url }}">{{ ipcr.title|slice:":50" }}
+                    </a>
+                  </p>
+                  <div class="">{{ipcr.rank}}</div>
+                  <div class="">{{ipcr.ipcr_type}}</div>
+                </div>
               </div>
             </div>
+            <div class="col col-lg-3 text-start p-3">
+              <div class="card border-0">
+                <div class="card-body px-0">
+                  <p class="card-text">
+                    <a class="h4 text-success text-decoration-none"
+                      href="{{ ipcr.get_absolute_url }}">{{ipcr.final_adjectival_rating}}
+                    </a>
+                  </p>
+                  <div class="">Final Adjectival Rating</div>
+                </div>
+              </div>
+            </div>
+            <div class="col col-lg-4 text-start p-3">
+              <div class="card border-0">
+                <div class="card-body px-0">
+                  <p class="card-text">
+                    <a class="h3 text-decoration-none text-success"
+                      href="{{ ipcr.get_absolute_url }}">{{ipcr.final_numerical_rating}}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16">
+                        <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+                      </svg>
+                    </a>
+                    (3.02% increase than previos IPCR rating)
+                  </p>
+                  <div class="">Final Numerical Rating</div>
+                </div>
+              </div>
+            <br>
           </div>
-          {% endfor %}
-        </div>
+        {% endfor %}
         {% endif %}
       </div>
     </div>
   </div>
+</div>
 
   {% endblock %}
