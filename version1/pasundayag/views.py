@@ -18,4 +18,10 @@ def category_list(request, category_slug=None):
 
 def ipcr_detail(request, slug):
     ipcr = get_object_or_404(IPCR, slug=slug, is_active=True)
+    ipcr.calculate_stra_total()
+    ipcr.calculate_core_acad_total()
+    ipcr.calculate_irp_total()
+    ipcr.calculate_tae_total()
+    ipcr.calculate_supp_total()
+    ipcr.calculate_final_numerical_rating()
     return render(request, "pasundayag/single.html", {"ipcr": ipcr})
