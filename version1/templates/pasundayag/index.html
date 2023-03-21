@@ -2,85 +2,93 @@
 {% block title %}Pasundayag - Low Prices in Books & more{% endblock %}
 {% block content %}
 
-<div class="container">
-  <div class="alert alert-primary fw600 rounded-0 border-0 pb-3" role="alert">
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-info-circle me-2"
-      viewBox="0 0 16 16">
-      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-      <path
-        d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-    </svg>
-    Perfomance Appraisal System - <u>Click here for our latest updates</u> we are doing our best to make CSU the spearhead of the future. Thank you for
-    your patience and support.
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="album py-5">
-        <div class="pb-3">
-          <h1 class="h3">Perfomance Appraisal System</h1>
-        </div>
-
-        {% if not ipcrs %}
-        <div class="col-12">There are currently no ipcrs active</div>
-        {% else %}
-
-        {% for ipcr in ipcrs %}
-          <div class="row border rounded mb-1">
-            <div class="col col-lg-2 text-center p-3">
-                {% for image in ipcr.ipcr_image.all %}
-                {% if image.is_feature%}
-                  <img class="rounded-circle border" alt = "Rounded Image" width = "100" height = "100" src="{{ image.image.url }}"
-                  alt="{{ image.image.alt_text }}">
-                {% endif %}
-                {% endfor %}
-            </div>
-            <div class="col col-lg-3 text-start p-3">
-              <div class="card border-0">
-                <div class="card-body px-0">
-                  <p class="card-text">
-                    <a class="text-dark text-decoration-none fw-bold h"
-                      href="{{ ipcr.get_absolute_url }}">{{ ipcr.title|slice:":50" }}
-                    </a>
-                  </p>
-                  <div class="">{{ipcr.rank}}</div>
-                  <div class="">{{ipcr.ipcr_type}}</div>
-                </div>
-              </div>
-            </div>
-            <div class="col col-lg-3 text-start p-3">
-              <div class="card border-0">
-                <div class="card-body px-0">
-                  <p class="card-text">
-                    <a class="h4 text-success text-decoration-none"
-                      href="{{ ipcr.get_absolute_url }}">{{ipcr.final_adjectival_rating}}
-                    </a>
-                  </p>
-                  <div class="">Final Adjectival Rating</div>
-                </div>
-              </div>
-            </div>
-            <div class="col col-lg-4 text-start p-3">
-              <div class="card border-0">
-                <div class="card-body px-0">
-                  <p class="card-text">
-                    <a class="h3 text-decoration-none text-success"
-                      href="{{ ipcr.get_absolute_url }}">{{ipcr.final_numerical_rating}}
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16">
-                        <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
-                      </svg>
-                    </a>
-                    (3.02% increase than previos IPCR rating)
-                  </p>
-                  <div class="">Final Numerical Rating</div>
-                </div>
-              </div>
-            <br>
+{% for ipcr in ipcrs %}
+      <div class="sales-boxes">
+        <div class="recent-sales box">
+          <div class="title">Recent Sales</div>
+          <div class="sales-details">
+            <ul class="details">
+              <li class="topic">Date</li>
+              <li><a href="#">02 Jan 2021</a></li>
+            </ul>
+            <ul class="details">
+            <li class="topic">Customer</li>
+            <li><a href="#">Alex Doe</a></li>
+          </ul>
+          <ul class="details">
+            <li class="topic">Sales</li>
+            <li><a href="#">Delivered</a></li>
+          </ul>
+          <ul class="details">
+            <li class="topic">Total</li>
+            <li><a href="#">$204.98</a></li>
+          </ul>
           </div>
-        {% endfor %}
-        {% endif %}
+          <div class="button">
+            <a href="#">See All</a>
+          </div>
+        </div>
+        <div class="top-sales box">
+          <div class="title">Top Seling Product</div>
+          <ul class="top-sales-details">
+            <li>
+            <a href="#">
+              <!--<img src="images/sunglasses.jpg" alt="">-->
+              <span class="product">Vuitton Sunglasses</span>
+            </a>
+            <span class="price">$1107</span>
+          </li>
+          <li>
+            <a href="#">
+               <!--<img src="images/jeans.jpg" alt="">-->
+              <span class="product">Hourglass Jeans </span>
+            </a>
+            <span class="price">$1567</span>
+          </li>
+          <li>
+            <a href="#">
+             <!-- <img src="images/nike.jpg" alt="">-->
+              <span class="product">Nike Sport Shoe</span>
+            </a>
+            <span class="price">$1234</span>
+          </li>
+          <li>
+            <a href="#">
+              <!--<img src="images/scarves.jpg" alt="">-->
+              <span class="product">Hermes Silk Scarves.</span>
+            </a>
+            <span class="price">$2312</span>
+          </li>
+          <li>
+            <a href="#">
+              <!--<img src="images/blueBag.jpg" alt="">-->
+              <span class="product">Succi Ladies Bag</span>
+            </a>
+            <span class="price">$1456</span>
+          </li>
+          <li>
+            <a href="#">
+              <!--<img src="images/bag.jpg" alt="">-->
+              <span class="product">Gucci Womens's Bags</span>
+            </a>
+            <span class="price">$2345</span>
+          <li>
+            <a href="#">
+              <!--<img src="images/addidas.jpg" alt="">-->
+              <span class="product">Addidas Running Shoe</span>
+            </a>
+            <span class="price">$2345</span>
+          </li>
+          <li>
+            <a href="#">
+             <!--<img src="images/shirt.jpg" alt="">-->
+              <span class="product">Bilack Wear's Shirt</span>
+            </a>
+            <span class="price">$1245</span>
+          </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
+      {% endfor %}
 
-  {% endblock %}
+{% endblock %}
